@@ -1,16 +1,24 @@
 package com.ankit.pomodoro.controller;
 
+import com.ankit.pomodoro.View.GUI;
 import com.ankit.pomodoro.model.Clock;
 
 import javax.swing.*;
+import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 /**
  * Created by ankit07 on 6/18/16.
  */
-public class Timer extends SwingWorker<String,Void> {
+public class Timer extends SwingWorker<String,Integer> {
 
-    Clock clock = new Clock();
+    Clock clock;
+    GUI gui;
+
+    public Timer(GUI gui){
+        this.gui = gui;
+        this.clock = new Clock();
+    }
 
     @Override
     protected String doInBackground() throws Exception {
@@ -19,12 +27,12 @@ public class Timer extends SwingWorker<String,Void> {
             if(clock.alarmOff()){
                 break;
             }else{
-                System.out.println("RUNNING");
+                publish(clock.getTime());
             }
         }
         return "ALARM OFF";
     }
-    
+
     @Override
     protected void done(){
         try {
@@ -35,6 +43,12 @@ public class Timer extends SwingWorker<String,Void> {
             e.printStackTrace();
         }
 
+    }
+    @Override
+    protected void process(List<Integer> currentTimeList){
+        Integer i = currentTimeList.size()-1;
+        System.out.println("CURRENT TIME:::" + i);
+        this.gui.getLabel().setText(i.toString());
     }
 
     public void restart() {

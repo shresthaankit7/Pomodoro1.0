@@ -1,16 +1,26 @@
 package com.ankit.pomodoro.controller;
 
+import com.ankit.pomodoro.View.GUI;
 import com.ankit.pomodoro.model.Clock;
 
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 /**
  * Created by ankit07 on 6/18/16.
  */
 public class GUIController implements ActionListener {
 
-    Timer timer = new Timer();
+    GUI gui;
+    Timer timer;
+
+    public GUIController(){
+        gui = new GUI();
+        timer = new Timer(gui);
+    }
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -18,6 +28,9 @@ public class GUIController implements ActionListener {
         switch (actionCommand){
             case "play":
                 System.out.println("PLAY");
+                if(SwingUtilities.isEventDispatchThread()){
+                    System.out.println("ON EVENT DISPATCH THREAD::::::::");
+                }
                 timer.execute();
                 break;
             case "restart":
@@ -27,5 +40,9 @@ public class GUIController implements ActionListener {
             default:
                 System.out.println("ERROR");
         }
+    }
+
+    public void control() {
+        gui.setActionListener(this);
     }
 }

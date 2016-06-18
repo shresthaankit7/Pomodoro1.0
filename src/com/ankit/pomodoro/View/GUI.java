@@ -11,7 +11,7 @@ import java.awt.*;
 public class GUI extends JFrame {
     JButton play = new JButton("PLAY");
     JButton restart = new JButton("RESTART");
-    JProgressBar progressBar = new JProgressBar();
+    JLabel counter = new JLabel("COUNTER");
 
     public GUI(){
         super("Pomodoro");
@@ -19,15 +19,19 @@ public class GUI extends JFrame {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
         JPanel buttonPanel = new JPanel();
-        JPanel progressBarPanel = new JPanel();
+        JPanel indicator = new JPanel();
 
         buttonPanel.add(play);
         buttonPanel.add(restart);
 
-        progressBarPanel.add(progressBar);
+        counter.setOpaque(true);
+        counter.setBackground(Color.GRAY);
+        counter.setForeground(Color.WHITE);
+
+        indicator.add(counter);
 
         add(buttonPanel, BorderLayout.NORTH);
-        add(progressBarPanel,BorderLayout.SOUTH);
+        add(indicator,BorderLayout.SOUTH);
         setVisible(true);
 
     }
@@ -38,5 +42,14 @@ public class GUI extends JFrame {
 
         play.setActionCommand("play");
         restart.setActionCommand("restart");
+    }
+
+
+    public JButton getPlay() {
+        return play;
+    }
+
+    public JLabel getLabel() {
+        return counter;
     }
 }

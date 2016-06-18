@@ -2,6 +2,7 @@ package com.ankit.pomodoro;
 
 import com.ankit.pomodoro.View.GUI;
 import com.ankit.pomodoro.controller.GUIController;
+import com.ankit.pomodoro.model.Clock;
 
 import javax.swing.*;
 
@@ -14,8 +15,8 @@ public class Main {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                GUI gui = new GUI();
-                gui.setActionListener(new GUIController());
+                GUIController guiController = new GUIController();
+                guiController.control();
             }
         });
     }
