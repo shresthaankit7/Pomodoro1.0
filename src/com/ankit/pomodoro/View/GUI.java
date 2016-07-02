@@ -4,6 +4,7 @@ import com.ankit.pomodoro.controller.GUIController;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
 import java.io.File;
 
@@ -21,7 +22,7 @@ public class GUI extends JFrame {
     public GUI(){
         super("Pomodoro");
 
-        setSize(300,100);
+        setSize(300,150);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
