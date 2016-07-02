@@ -9,7 +9,7 @@ import java.util.concurrent.TimeUnit;
  * Created by ankit07 on 6/18/16.
  */
 public class Clock {
-    final static int countDown = 1500000;
+    final static int countDown = 5000;
 
     long startTime;
     long endTime;

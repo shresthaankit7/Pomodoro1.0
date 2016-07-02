@@ -51,7 +51,7 @@ public class GUI extends JFrame {
 
     private void setIcons(JButton button,String fileName) {
         try{
-            Icon icon = new ImageIcon("src/resources/" + fileName);
+            Icon icon = new ImageIcon("src/main/resources/" + fileName);
             button.setIcon(icon);
         }catch (Exception e){
             e.printStackTrace();

@@ -2,7 +2,6 @@ package com.ankit.pomodoro.controller;
 
 import com.ankit.pomodoro.View.GUI;
 import com.ankit.pomodoro.model.Clock;
-import com.sun.applet2.preloader.CancelException;
 
 import javax.swing.*;
 import java.util.List;
