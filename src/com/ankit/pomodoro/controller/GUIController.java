@@ -37,13 +37,22 @@ public class GUIController implements ActionListener {
                     try{
                         timer.cancel(true);
                     }catch (Exception exception){
-                        exception.printStackTrace();
+//                        exception.printStackTrace();
                         break;
                     }
                     timer = new Timer(this.gui);
                     timer.execute();
                     gui.disablePlay();
 
+                break;
+            case "stop":
+                try{
+                    timer.cancel(true);
+                    gui.enablePlay();
+                }catch (Exception ex){
+//                    ex.printStackTrace();
+                    break;
+                }
                 break;
             default:
                 System.out.println("ERROR");

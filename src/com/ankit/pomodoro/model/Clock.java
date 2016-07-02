@@ -8,7 +8,7 @@ import javax.swing.*;
 public class Clock {
 //    final static int countDown = 1500000;
 
-    final static int countDown = 40000;
+    final static int countDown = 120000;
 
     long startTime;
     long endTime;
@@ -36,7 +36,7 @@ public class Clock {
         Long difference = currentTime - startTime;
 
         String min = Long.toString(difference /(1000*60));
-        String sec = Long.toString(difference /(1000));
-        return min + " : " + sec;
+        String sec = Long.toString( (difference/1000)>=60 ? (difference/1000)-60: (difference/1000));
+        return (min.length()==1 ? "0"+min : min) + " : " + (sec.length() == 1 ? "0"+sec : sec);
     }
 }

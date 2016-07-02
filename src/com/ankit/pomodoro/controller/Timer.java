@@ -39,6 +39,7 @@ public class Timer extends SwingWorker<String,Void> {
     protected void done(){
         try {
             System.out.println(get());
+
             gui.enablePlay();
         } catch (InterruptedException e) {
             e.printStackTrace();
@@ -56,8 +57,4 @@ public class Timer extends SwingWorker<String,Void> {
         this.gui.getLabel().setText( this.clock.getTime());
     }
 
-    public void restart() {
-        this.clock.restart();
-        System.out.println("RESTARTED****************************");
-    }
 }

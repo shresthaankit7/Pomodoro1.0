@@ -11,11 +11,16 @@ import java.awt.*;
 public class GUI extends JFrame {
     JButton play = new JButton("PLAY");
     JButton restart = new JButton("RESTART");
+
+    JButton stop = new JButton("STOP");
+
     JLabel counter = new JLabel("COUNTER");
 
     public GUI(){
         super("Pomodoro");
-        setSize(200,150);
+//        setSize(200,150);
+
+        setSize(500,300);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
         JPanel buttonPanel = new JPanel();
@@ -23,6 +28,7 @@ public class GUI extends JFrame {
 
         buttonPanel.add(play);
         buttonPanel.add(restart);
+        buttonPanel.add(stop);
 
         counter.setOpaque(true);
         counter.setBackground(Color.GRAY);
@@ -39,9 +45,11 @@ public class GUI extends JFrame {
     public void setActionListener(GUIController listener) {
         play.addActionListener(listener);
         restart.addActionListener(listener);
+        stop.addActionListener(listener);
 
         play.setActionCommand("play");
         restart.setActionCommand("restart");
+        stop.setActionCommand("stop");
     }
 
 
@@ -61,5 +69,9 @@ public class GUI extends JFrame {
 
     public void enablePlay(){
         play.setEnabled(true);
+    }
+
+    public void clearCounter() {
+        getLabel().setText("00:00");
     }
 }
