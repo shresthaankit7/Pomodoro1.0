@@ -54,4 +54,12 @@ public class GUI extends JFrame {
     public JLabel getLabel() {
         return counter;
     }
+
+    public void disablePlay() {
+        play.setEnabled(false);
+    }
+
+    public void enablePlay(){
+        play.setEnabled(true);
+    }
 }

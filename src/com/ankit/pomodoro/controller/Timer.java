@@ -39,6 +39,7 @@ public class Timer extends SwingWorker<String,Void> {
     protected void done(){
         try {
             System.out.println(get());
+            gui.enablePlay();
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {

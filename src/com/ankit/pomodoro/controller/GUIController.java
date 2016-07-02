@@ -19,7 +19,7 @@ public class GUIController implements ActionListener {
 
     public GUIController(){
         gui = new GUI();
-        timer = new Timer(gui);
+//        timer = new Timer(gui);
     }
 
     @Override
@@ -27,14 +27,23 @@ public class GUIController implements ActionListener {
         String actionCommand = e.getActionCommand();
         switch (actionCommand){
             case "play":
-                System.out.println("PLAY");
+//                System.out.println("PLAY");
+                timer = new Timer(gui);
                 timer.execute();
+                gui.disablePlay();
                 break;
             case "restart":
-                System.out.println("RESTART");
-                timer.cancel(true);
-                timer = new Timer(this.gui);
-                timer.execute();
+//                System.out.println("RESTART");
+                    try{
+                        timer.cancel(true);
+                    }catch (Exception exception){
+                        exception.printStackTrace();
+                        break;
+                    }
+                    timer = new Timer(this.gui);
+                    timer.execute();
+                    gui.disablePlay();
+
                 break;
             default:
                 System.out.println("ERROR");
