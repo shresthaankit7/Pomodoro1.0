@@ -29,7 +29,12 @@ public class Clock {
         endTime = startTime + countDown;
     }
 
-    public Integer getTime() {
-        return (int)(System.currentTimeMillis()-startTime);
+    public String getTime() {
+        Long currentTime = System.currentTimeMillis();
+        Long difference = currentTime - startTime;
+
+        String min = Long.toString(difference /(1000*60));
+        String sec = Long.toString(difference /(1000));
+        return min + " : " + sec;
     }
 }

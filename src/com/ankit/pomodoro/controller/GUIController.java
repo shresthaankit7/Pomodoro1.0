@@ -28,14 +28,13 @@ public class GUIController implements ActionListener {
         switch (actionCommand){
             case "play":
                 System.out.println("PLAY");
-                if(SwingUtilities.isEventDispatchThread()){
-                    System.out.println("ON EVENT DISPATCH THREAD::::::::");
-                }
                 timer.execute();
                 break;
             case "restart":
                 System.out.println("RESTART");
                 timer.cancel(true);
+                timer = new Timer(this.gui);
+                timer.execute();
                 break;
             default:
                 System.out.println("ERROR");

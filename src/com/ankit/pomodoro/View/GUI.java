@@ -49,6 +49,8 @@ public class GUI extends JFrame {
         return play;
     }
 
+    public JButton getRestart(){ return restart; }
+
     public JLabel getLabel() {
         return counter;
     }

@@ -2,15 +2,17 @@ package com.ankit.pomodoro.controller;
 
 import com.ankit.pomodoro.View.GUI;
 import com.ankit.pomodoro.model.Clock;
+import com.sun.applet2.preloader.CancelException;
 
 import javax.swing.*;
 import java.util.List;
+import java.util.concurrent.CancellationException;
 import java.util.concurrent.ExecutionException;
 
 /**
  * Created by ankit07 on 6/18/16.
  */
-public class Timer extends SwingWorker<String,Integer> {
+public class Timer extends SwingWorker<String,Void> {
 
     Clock clock;
     GUI gui;
@@ -27,7 +29,7 @@ public class Timer extends SwingWorker<String,Integer> {
             if(clock.alarmOff()){
                 break;
             }else{
-                publish(clock.getTime());
+                publish();
             }
         }
         return "ALARM OFF";
@@ -41,14 +43,16 @@ public class Timer extends SwingWorker<String,Integer> {
             e.printStackTrace();
         } catch (ExecutionException e) {
             e.printStackTrace();
+        } catch(CancellationException e){
+            System.out.println("Cancelled");
         }
 
     }
+
     @Override
-    protected void process(List<Integer> currentTimeList){
-        Integer i = currentTimeList.size()-1;
-        System.out.println("CURRENT TIME:::" + i);
-        this.gui.getLabel().setText(i.toString());
+    protected void process(List<Void> v){
+//        System.out.println("NOW::::" + this.clock.getTime());
+        this.gui.getLabel().setText( this.clock.getTime());
     }
 
     public void restart() {
