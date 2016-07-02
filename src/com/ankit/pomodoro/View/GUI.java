@@ -2,26 +2,28 @@ package com.ankit.pomodoro.View;
 
 import com.ankit.pomodoro.controller.GUIController;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.io.File;
 
 /**
  * Created by ankit07 on 6/18/16.
  */
 public class GUI extends JFrame {
-    JButton play = new JButton("PLAY");
-    JButton restart = new JButton("RESTART");
+    JButton play = new JButton();
+    JButton restart = new JButton();
 
-    JButton stop = new JButton("STOP");
+    JButton stop = new JButton();
 
-    JLabel counter = new JLabel("COUNTER");
+    JLabel counter = new JLabel("00:00");
 
     public GUI(){
         super("Pomodoro");
-//        setSize(200,150);
 
-        setSize(500,300);
+        setSize(300,100);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         JPanel buttonPanel = new JPanel();
         JPanel indicator = new JPanel();
@@ -30,6 +32,10 @@ public class GUI extends JFrame {
         buttonPanel.add(restart);
         buttonPanel.add(stop);
 
+        setIcons(play,"play.png");
+        setIcons(restart,"restart.png");
+        setIcons(stop,"stop.png");
+
         counter.setOpaque(true);
         counter.setBackground(Color.GRAY);
         counter.setForeground(Color.WHITE);
@@ -37,9 +43,18 @@ public class GUI extends JFrame {
         indicator.add(counter);
 
         add(buttonPanel, BorderLayout.NORTH);
-        add(indicator,BorderLayout.SOUTH);
+        add(indicator,BorderLayout.CENTER);
         setVisible(true);
 
+    }
+
+    private void setIcons(JButton button,String fileName) {
+        try{
+            Icon icon = new ImageIcon("src/resources/" + fileName);
+            button.setIcon(icon);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     public void setActionListener(GUIController listener) {
