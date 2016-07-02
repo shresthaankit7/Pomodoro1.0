@@ -40,6 +40,8 @@ public class Timer extends SwingWorker<String,Void> {
         try {
             System.out.println(get());
 
+            JOptionPane.showMessageDialog(gui,"Pomodoro TIME UP");
+
             gui.enablePlay();
         } catch (InterruptedException e) {
             e.printStackTrace();
