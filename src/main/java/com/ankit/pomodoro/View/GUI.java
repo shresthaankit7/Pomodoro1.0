@@ -7,6 +7,7 @@ import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
 import java.io.File;
+import java.io.InputStream;
 
 /**
  * Created by ankit07 on 6/18/16.
@@ -51,8 +52,8 @@ public class GUI extends JFrame {
 
     private void setIcons(JButton button,String fileName) {
         try{
-            Icon icon = new ImageIcon("src/main/resources/" + fileName);
-            button.setIcon(icon);
+            InputStream stream = this.getClass().getClassLoader().getResourceAsStream(fileName);
+            button.setIcon(new ImageIcon(ImageIO.read(stream)));
         }catch (Exception e){
             e.printStackTrace();
         }
