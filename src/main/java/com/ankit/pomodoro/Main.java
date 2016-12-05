@@ -16,7 +16,7 @@ public class Main {
             @Override
             public void run() {
                 GUIController guiController = new GUIController();
-                guiController.control();
+                 guiController.control();
             }
         });
     }
